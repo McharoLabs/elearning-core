@@ -14,12 +14,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CORE_ENTITIES = void 0;
-const UserEntities = require("./src/user/entities");
-const CourseEntities = require("./src/course/entities");
-exports.CORE_ENTITIES = [
-    ...Object.values(UserEntities),
-    ...Object.values(CourseEntities),
-];
-__exportStar(require("./src/user"), exports);
+__exportStar(require("./user.entity"), exports);
 //# sourceMappingURL=index.js.map

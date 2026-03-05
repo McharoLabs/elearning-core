@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
+const course_entity_1 = require("../../course/entities/course.entity");
 let User = class User extends typeorm_1.BaseEntity {
 };
 exports.User = User;
@@ -46,6 +47,10 @@ __decorate([
     (0, typeorm_1.DeleteDateColumn)({ nullable: true }),
     __metadata("design:type", Date)
 ], User.prototype, "deletedAt", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => course_entity_1.Course, (course) => course.instructor),
+    __metadata("design:type", Array)
+], User.prototype, "courses", void 0);
 exports.User = User = __decorate([
     (0, typeorm_1.Entity)({ name: 'users' })
 ], User);

@@ -4,9 +4,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Course } from '../../course/entities/course.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
@@ -33,4 +35,7 @@ export class User extends BaseEntity {
 
   @DeleteDateColumn({ nullable: true })
   deletedAt: Date;
+
+  @OneToMany(() => Course, (course) => course.instructor)
+  courses: Course[];
 }
