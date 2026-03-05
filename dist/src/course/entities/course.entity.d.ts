@@ -1,5 +1,6 @@
 import { BaseEntity } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
+import { Lesson } from './lesson.entity';
 export declare class Course extends BaseEntity {
     id: string;
     title: string;
@@ -8,4 +9,5 @@ export declare class Course extends BaseEntity {
     createdAt: Date;
     updatedAt: Date;
     instructor: User;
+    lessons: Lesson[];
 }

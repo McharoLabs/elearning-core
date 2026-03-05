@@ -4,15 +4,13 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User } from '../../user/entities/user.entity';
-import { Lesson } from './lesson.entity';
+import { Course } from '../../course/entities/course.entity';
 
-@Entity({ name: 'courses' })
-export class Course extends BaseEntity {
+@Entity({ name: 'lessons' })
+export class Lesson extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -20,10 +18,7 @@ export class Course extends BaseEntity {
   title: string;
 
   @Column({ type: 'text', nullable: true })
-  description?: string;
-
-  @Column({ default: true })
-  isPublished: boolean;
+  content?: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -31,12 +26,9 @@ export class Course extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.courses, {
+  @ManyToOne(() => Course, (course) => course.lessons, {
     nullable: false,
     onDelete: 'CASCADE',
   })
-  instructor: User;
-
-  @OneToMany(() => Lesson, (lesson) => lesson.course)
-  lessons: Lesson[];
+  course: Course;
 }
